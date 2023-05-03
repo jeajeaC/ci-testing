@@ -1,0 +1,10 @@
+.title {
+  font-family: 'Inter', sans-serif;
+
+  &.italic {
+    font-style: italic;
+  }
+
+  font-weight: $text-bold;
+  font-size: $font-size-large;
+}

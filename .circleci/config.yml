@@ -1,0 +1,15 @@
+version: 2.1
+orbs:
+    cypress: cypress-io/cypress@3
+executor:
+    docker:
+        image: cypress/browsers:node16.16.0-chrome107-ff107-edge
+
+workflows:
+    test:
+        jobs:
+            - cypress/run:
+                  package-manager: "yarn"
+                  install-browsers: true
+                  start-command: "yarn dev"
+                  cypress-command: "yarn test:e2e"

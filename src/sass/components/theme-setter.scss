@@ -1,0 +1,13 @@
+.theme {
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  position: fixed;
+  right: 0;
+  margin: 4px;
+  z-index: 4;
+
+  img {
+    height: 36px;
+    width: 36px;
+  }
+}

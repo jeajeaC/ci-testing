@@ -1,0 +1,13 @@
+stages:
+    - test
+
+test:
+    image: cypress/browsers:node16.16.0-chrome107-ff107-edge
+    stage: test
+    script:
+        # install dependencies
+        - yarn install --frozen-lockfile
+        # start the server in the background
+        - yarn dev &
+        # run Cypress tests
+        - yarn test:e2e

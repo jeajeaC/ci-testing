@@ -1,0 +1,56 @@
+$themes: (
+  "dark": (text-primary: #fff,
+    text-secondary:#cdcdcd,
+    background-primary: #1b1b1b,
+    background-secondary: #858585,
+  ),
+  "light": (text-primary: #000,
+    text-secondary:#858585,
+    background-primary: #fff,
+    background-secondary: #fff, ),
+);
+
+
+/**
+ * Font Sizing
+ */
+$dark-grey: #1b1b1b;
+$grey: #343434;
+$red-danger: #dC3545;
+$light-grey: #858585;
+$blue: #0d6efd;
+
+/**
+ * Layout 
+ */
+$page-padding : 16px;
+$gutter: 32px;
+$header-height: 48px;
+$footer-height: 64px;
+$border-radius-sm: 4px;
+$border-radius-md: 8px;
+
+$text-secondary: #cdcdcd;
+$text-primary: #fff;
+
+/**
+ * Font Sizing
+ */
+$text-bold: 600;
+$text-bolder: 800;
+$font-size-sm: 0.75rem;
+$font-size-sm-2: 0.85rem;
+$font-size-med: 1rem;
+$font-size-med-2: 1.2rem;
+$font-size-large: 2rem;
+$font-size-xl: 3rem;
+
+/**
+ * Line Height
+ */
+$line-height: 1.5;
+
+$font-size-h1: 48px !default;
+$font-size-h2: 36px !default;
+$font-size-h3: 27px !default;
+$font-size-h4: 19px !default;
