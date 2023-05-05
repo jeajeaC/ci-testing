@@ -1,12 +1,18 @@
 import type { RootState } from "~/store"
 import { useSelector, useDispatch } from "react-redux"
-import { addToCart } from "~/reducers/cart"
+import { addToCart, removeFromCart, removeAllFromCart } from "~/reducers/cart"
 import "~/sass/styles.scss"
 
 import Header from "~/components/header/header"
+import Footer from "~/components/footer/footer"
+import Item from "~/components/item/item"
+import ItemList from "~/components/item/itemList"
 
 function App() {
-    const count = useSelector((state: RootState) => state.cart.itemsCount)
+    const { items, itemCount } = useSelector((state: RootState) => ({
+        items: state.cart.items,
+        itemCount: state.cart.itemsCount
+    }))
     const dispatch = useDispatch()
 
     return (
@@ -14,18 +20,25 @@ function App() {
             <Header />
             <div className="page-content">
                 <h1 className="title-2">Vite + React</h1>
-                <div className="card">
-                    <button onClick={() => dispatch(addToCart("count"))}>
-                        count is {count}
-                    </button>
-                    <p>
-                        Edit <code>src/App.tsx</code> and save to test HMR
-                    </p>
-                </div>
-                <p className="read-the-docs">
-                    Click on the Vite and React logos to learn more
-                </p>
+                <ItemList>
+                    {Object.entries(items).map(([id, { count, title }]) => (
+                        <li key={id}>
+                            <Item
+                                id={id}
+                                count={count}
+                                onDelete={() => dispatch(removeFromCart(id))}
+                                onAddToCart={() => dispatch(addToCart(id))}
+                                title={title}
+                                imageUrl=""
+                            />
+                        </li>
+                    ))}
+                </ItemList>
             </div>
+            <Footer
+                onRemoveAllFromCart={() => dispatch(removeAllFromCart())}
+                itemCount={itemCount}
+            />
         </>
     )
 }

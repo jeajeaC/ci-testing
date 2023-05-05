@@ -1,10 +1,20 @@
-$bg-color: #1b1b1b;
-$border-primary: #858585;
+/**
+ * Font Sizing
+ */
+$dark-grey: #1b1b1b;
+$grey: #343434;
+$red-danger: #dC3545;
+$light-grey: #858585;
+$blue: #0d6efd;
 
-
-
-$gutter : 8px;
+/**
+ * Layout 
+ */
+$gutter : 16px;
 $header-height: 48px;
+$footer-height: 64px;
+$border-radius-sm: 4px;
+$border-radius-md: 8px;
 
 $text-secondary: #cdcdcd;
 $text-primary: #fff;

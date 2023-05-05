@@ -1,0 +1,17 @@
+.button {
+  height: 42px;
+  color: $text-primary;
+  border: 0;
+  border-radius: $border-radius-sm;
+  font-weight: bold;
+  background-color: $blue;
+
+  &:disabled {
+    opacity: .4;
+  }
+
+  &.danger {
+    background-color: $red-danger;
+  }
+
+}

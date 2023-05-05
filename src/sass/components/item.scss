@@ -1,0 +1,28 @@
+.item {
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: fit-content;
+}
+
+.item-delete-button {
+  position: absolute;
+  margin: auto;
+}
+
+.item-article {
+  background-color: $light-grey;
+  border-radius: $border-radius-md;
+  border: 2px solid $text-secondary;
+  width: 100%;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.5s;
+  padding: 8px;
+
+  &.swiped {
+    transform: translateX(64px);
+  }
+}

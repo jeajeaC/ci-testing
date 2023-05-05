@@ -1,12 +1,12 @@
-header {
+footer {
   width: 100%;
-  height: $header-height;
+  height: $footer-height;
   color: $text-secondary;
   background-color: $dark-grey;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  border-bottom: 1px solid $light-grey;
+  border-top: 1px solid $light-grey;
   position: fixed;
-  top: 0;
+  bottom: 0;
 }
