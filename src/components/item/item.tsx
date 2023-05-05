@@ -8,18 +8,19 @@ import deleteLogo from "~/assets/delete.svg"
 import addToCartLogo from "~/assets/shopping_cart.svg"
 
 interface ItemProps {
-    id: string
-    title: string
-    imageUrl: string
     count: number
+    beer: {
+        id: string
+        name: string
+        description: string
+        imageUrl: string
+    }
     onDelete: Function
     onAddToCart: Function
 }
 
 export default function Item({
-    id,
-    title,
-    imageUrl,
+    beer,
     count,
     onDelete,
     onAddToCart
@@ -32,7 +33,7 @@ export default function Item({
     return (
         <div className="item">
             <Button
-                onClick={() => onDelete(id)}
+                onClick={() => onDelete(beer.id)}
                 disabled={count === 0}
                 classes={{ "item-delete-button": true, danger: true }}
             >
@@ -45,9 +46,13 @@ export default function Item({
                     swiped
                 })}
             >
-                <img src={imageUrl} />
-                <p>{title}</p>
-                <Button onClick={() => onAddToCart(id)}>
+                <div>
+                    <img src={beer.imageUrl} />
+
+                    <p className="item-name">{beer.name}</p>
+                    <p className="item-description">{beer.description}</p>
+                </div>
+                <Button onClick={() => onAddToCart(beer.id)}>
                     <img
                         src={addToCartLogo}
                         alt="add to cart"
