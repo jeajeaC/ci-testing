@@ -1,0 +1,16 @@
+@import "abstracts/variables";
+
+@import "layout/header.scss";
+@import "layout/page-content.scss";
+
+@import "typography/title.scss";
+@import "typography/text.scss";
+
+@import "font.css";
+
+body {
+  margin: 0;
+  background-color: $bg-color;
+  color: $text-primary;
+  font-family: 'Montserrat', sans-serif;
+}

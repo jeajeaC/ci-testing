@@ -4,7 +4,15 @@ const config: StorybookConfig = {
     addons: [
         "@storybook/addon-links",
         "@storybook/addon-essentials",
-        "@storybook/addon-interactions"
+        "@storybook/addon-interactions",
+        {
+            name: "@storybook/addon-styling",
+            options: {
+                sass: {
+                    implementation: require("sass")
+                }
+            }
+        }
     ],
     framework: {
         name: "@storybook/react-vite",
