@@ -1,12 +1,12 @@
 import type { RootState } from "~/store"
 import { useSelector, useDispatch } from "react-redux"
-import { increment } from "~/reducers/counter"
+import { addToCart } from "~/reducers/cart"
 import reactLogo from "./assets/react.svg"
 import viteLogo from "/vite.svg"
 import "./App.css"
 
 function App() {
-    const count = useSelector((state: RootState) => state.counter.value)
+    const count = useSelector((state: RootState) => state.cart.itemsCount)
     const dispatch = useDispatch()
 
     return (
@@ -25,7 +25,7 @@ function App() {
             </div>
             <h1>Vite + React</h1>
             <div className="card">
-                <button onClick={() => dispatch(increment())}>
+                <button onClick={() => dispatch(addToCart("count"))}>
                     count is {count}
                 </button>
                 <p>
