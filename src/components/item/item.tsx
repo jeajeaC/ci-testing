@@ -6,15 +6,11 @@ import Button from "~/components/button/button"
 
 import deleteLogo from "~/assets/delete.svg"
 import addToCartLogo from "~/assets/shopping_cart.svg"
+import type { Beer } from "~/services/beer"
 
 interface ItemProps {
     count: number
-    beer: {
-        id: string
-        name: string
-        description: string
-        imageUrl: string
-    }
+    beer: Beer
     onDelete: Function
     onAddToCart: Function
 }
@@ -31,7 +27,7 @@ export default function Item({
         onSwipedLeft: () => setSwiped(false)
     })
     return (
-        <div className="item">
+        <div className="item-wrapper">
             <Button
                 onClick={() => onDelete(beer.id)}
                 disabled={count === 0}
@@ -46,19 +42,23 @@ export default function Item({
                     swiped
                 })}
             >
-                <div>
-                    <img src={beer.imageUrl} />
-
+                <div
+                    className="
+                text"
+                >
                     <p className="item-name">{beer.name}</p>
-                    <p className="item-description">{beer.description}</p>
+                    <p className="description">{beer.description}</p>
                 </div>
-                <Button onClick={() => onAddToCart(beer.id)}>
+                <button
+                    onClick={() => onAddToCart(beer.id)}
+                    className="add-button"
+                >
                     <img
                         src={addToCartLogo}
                         alt="add to cart"
                         className="logo"
                     />
-                </Button>
+                </button>
             </article>
         </div>
     )

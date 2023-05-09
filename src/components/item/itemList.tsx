@@ -1,5 +1,7 @@
+import { ReactNode } from "react"
+
 interface ItemListProps {
-    children: JSX.Element[]
+    children: ReactNode | ReactNode[]
 }
 
 export default function ItemList({ children }: ItemListProps) {

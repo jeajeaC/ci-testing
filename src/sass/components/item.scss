@@ -1,28 +1,69 @@
-.item {
+.item-wrapper {
   display: flex;
   align-items: center;
   position: relative;
   height: fit-content;
+  justify-content: end;
+
+  .add-button {
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 16px;
+    border: none;
+    border-radius: 0 8px 8px 0;
+    background-color: $blue;
+  }
 }
 
 .item-delete-button {
   position: absolute;
-  margin: auto;
+  height: 100%;
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 8px;
+  border-radius: 8px;
+}
+
+
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li+li {
+    margin-top: 16px;
+  }
 }
 
 .item-article {
+
   background-color: $light-grey;
   border-radius: $border-radius-md;
   border: 2px solid $text-secondary;
-  width: 100%;
+  width: calc(100% - 16px);
   z-index: 2;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: transform 0.5s;
-  padding: 8px;
+  transition: transform 0.3s;
+  height: 180px;
+
+  .text {
+    padding: 8px;
+  }
+
+  .description {
+    font-size: $font-size-sm;
+    max-height: 100px;
+    overflow-y: scroll;
+  }
 
   &.swiped {
-    transform: translateX(64px);
+    transform: translateX(36px);
   }
 }

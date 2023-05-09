@@ -1,33 +1,56 @@
-import type { RootState } from "~/store"
+import { useCallback, useRef, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { addToCart, removeFromCart, removeAllFromCart } from "~/reducers/cart"
-import "~/sass/styles.scss"
+import classNames from "classnames"
 
+import { addToCart, removeFromCart, removeAllFromCart } from "~/reducers/cart"
+import type { RootState } from "~/store"
 import Header from "~/components/header/header"
 import Footer from "~/components/footer/footer"
+import Loading from "~/components/loading/loading"
 import Item from "~/components/item/item"
 import ItemList from "~/components/item/itemList"
+import HeroPicture from "~/components/heroPicture/heroPicture"
 import { useGetBeersQuery } from "./services/beer"
+import useDetectScrolledToBottom from "./hooks/useDetectScrolledToBottom"
+
+import "~/sass/styles.scss"
 
 function App() {
-    const { data, error, isLoading } = useGetBeersQuery(1)
-    console.log({ data, error, isLoading })
+    const [page, setPage] = useState<number>(1)
+    const pageRef = useRef<HTMLDivElement>(null)
+
+    const { data, error, isLoading } = useGetBeersQuery(page)
     const { items, itemCount } = useSelector((state: RootState) => ({
         items: state.cart.items,
         itemCount: state.cart.itemsCount
     }))
+
+    const changePage = useCallback(() => {
+        setPage(page + 1)
+    }, [page])
+    useDetectScrolledToBottom<HTMLDivElement>(changePage, pageRef)
     const dispatch = useDispatch()
 
+    if (error) return null
     return (
         <>
             <Header />
-            {!isLoading && !error ? (
-                <>
+            {isLoading ? (
+                <Loading />
+            ) : (
+                <div
+                    className={classNames({
+                        "big-wrapper": true,
+                        "with-footer": itemCount !== 0
+                    })}
+                    ref={pageRef}
+                >
+                    <HeroPicture />
+
                     <div className="page-content">
-                        <h1 className="title-2">Vite + React</h1>
                         <ItemList>
-                            {data.map((beer) => (
-                                <li key={beer.id}>
+                            {data?.map((beer) => (
+                                <li key={`${beer.id}-${beer.name}`}>
                                     <Item
                                         count={items[beer.id] || 0}
                                         onDelete={() =>
@@ -41,16 +64,17 @@ function App() {
                                 </li>
                             ))}
                         </ItemList>
+                        <Loading />
                     </div>
-                    <Footer
-                        onRemoveAllFromCart={() =>
-                            dispatch(removeAllFromCart())
-                        }
-                        itemCount={itemCount}
-                    />
-                </>
-            ) : (
-                "Loading..."
+                    {itemCount !== 0 && (
+                        <Footer
+                            onRemoveAllFromCart={() =>
+                                dispatch(removeAllFromCart())
+                            }
+                            itemCount={itemCount}
+                        />
+                    )}
+                </div>
             )}
         </>
     )

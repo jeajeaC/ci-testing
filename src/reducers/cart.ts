@@ -15,7 +15,7 @@ const cartSlice = createSlice({
     name: "items",
     initialState,
     reducers: {
-        addToCart: (state, action: PayloadAction<string>) => {
+        addToCart: (state, action: PayloadAction<number>) => {
             if (state.items[action.payload] !== undefined) {
                 state.items[action.payload] += 1
             } else {
@@ -23,7 +23,7 @@ const cartSlice = createSlice({
             }
             state.itemsCount += 1
         },
-        removeFromCart: (state, action: PayloadAction<string>) => {
+        removeFromCart: (state, action: PayloadAction<number>) => {
             if (state.items[action.payload] !== undefined) {
                 if (state.items[action.payload] === 1) {
                     delete state.items[action.payload]
