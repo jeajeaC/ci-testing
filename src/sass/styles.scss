@@ -1,4 +1,5 @@
 @import "abstracts/variables";
+@import "mixins/theme.scss";
 
 @import "layout/header.scss";
 @import "layout/footer.scss";
@@ -13,12 +14,16 @@
 @import "components/item.scss";
 @import "components/loading.scss";
 @import "components/hero.scss";
+@import "components/theme-setter.scss";
 
 @import "font.css";
 
 body {
   margin: 0;
-  background-color: $dark-grey;
   color: $text-primary;
   font-family: 'Montserrat', sans-serif;
+
+  @include themed {
+    background-color: t("background-primary");
+  }
 }

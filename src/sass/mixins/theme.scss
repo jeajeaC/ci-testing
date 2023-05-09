@@ -1,0 +1,31 @@
+@mixin themed() {
+
+  // pour chaque thème défini dans la variable $themes
+  @each $theme,
+  $map in $themes {
+
+    // défini un nouveau matcher .theme--nomdutheme le-matcheur-courant
+    .theme--#{$theme} & {
+      // defini une variable globale contenant un hash
+      // de toutes les valeurs courantes du theme
+      $theme-map: () !global;
+
+      @each $key,
+      $submap in $map {
+        $value: map-get(map-get($themes, $theme), "#{$key}");
+        $theme-map: map-merge($theme-map,
+          ($key: $value,
+          )) !global;
+      }
+
+      // execute le contenu original du mixin
+      @content;
+      // supprime la variable globale
+      $theme-map: null !global;
+    }
+  }
+}
+
+@function t($key: "base0") {
+  @return map-get($theme-map, $key);
+}

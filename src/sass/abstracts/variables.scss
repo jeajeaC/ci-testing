@@ -1,3 +1,16 @@
+$themes: (
+  "dark": (text-primary: #fff,
+    text-secondary:#cdcdcd,
+    background-primary: #1b1b1b,
+    background-secondary: #858585,
+  ),
+  "light": (text-primary: #000,
+    text-secondary:#858585,
+    background-primary: #fff,
+    background-secondary: #fff, ),
+);
+
+
 /**
  * Font Sizing
  */
@@ -23,7 +36,8 @@ $text-primary: #fff;
 /**
  * Font Sizing
  */
-$text-bold: 800;
+$text-bold: 600;
+$text-bolder: 800;
 $font-size-sm: 0.75rem;
 $font-size-sm-2: 0.85rem;
 $font-size-med: 1rem;

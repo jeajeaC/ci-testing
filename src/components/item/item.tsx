@@ -19,12 +19,12 @@ export default function Item({
     beer,
     count,
     onDelete,
-    onAddToCart
+    onAddToCart,
 }: ItemProps) {
     const [swiped, setSwiped] = useState(false)
     const handlers = useSwipeable({
         onSwipedRight: () => setSwiped(true),
-        onSwipedLeft: () => setSwiped(false)
+        onSwipedLeft: () => setSwiped(false),
     })
     return (
         <div className="item-wrapper">
@@ -39,14 +39,14 @@ export default function Item({
                 {...handlers}
                 className={classnames({
                     "item-article": true,
-                    swiped
+                    swiped,
                 })}
             >
-                <div
-                    className="
-                text"
-                >
-                    <p className="item-name">{beer.name}</p>
+                <div className="text">
+                    <p className="item-name">
+                        {beer.name}{" "}
+                        {count !== 0 && <span>{`(${count} in the cart)`}</span>}
+                    </p>
                     <p className="description">{beer.description}</p>
                 </div>
                 <button

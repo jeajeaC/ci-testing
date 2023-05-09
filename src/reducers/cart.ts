@@ -1,4 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
+import { toast } from "react-toastify"
 
 interface CartItemsState {
     itemsCount: number
@@ -8,7 +9,7 @@ interface CartItemsState {
 }
 const initialState: CartItemsState = {
     itemsCount: 0,
-    items: {}
+    items: {},
 }
 
 const cartSlice = createSlice({
@@ -22,6 +23,7 @@ const cartSlice = createSlice({
                 state.items[action.payload] = 1
             }
             state.itemsCount += 1
+            toast.success("item added to cart")
         },
         removeFromCart: (state, action: PayloadAction<number>) => {
             if (state.items[action.payload] !== undefined) {
@@ -31,13 +33,15 @@ const cartSlice = createSlice({
                     state.items[action.payload] -= 1
                 }
                 state.itemsCount -= 1
-            } else delete state.items[action.payload]
+                toast.warn("item removed from cart")
+            }
         },
         removeAllFromCart: (state) => {
             state.itemsCount = 0
             state.items = {}
-        }
-    }
+            toast.warn("removed everything from cart")
+        },
+    },
 })
 
 export const { addToCart, removeFromCart, removeAllFromCart } =

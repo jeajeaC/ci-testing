@@ -1,4 +1,3 @@
-// Need to use the React-specific entry point to import createApi
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
 
 export type Beer = {
@@ -22,7 +21,7 @@ export type Beer = {
                     value: number
                     unit: string
                 }
-            }
+            },
         ]
     }
     method: {
@@ -33,7 +32,7 @@ export type Beer = {
                     unit: string
                 }
                 duration: number
-            }
+            },
         ]
     }
     name: string
@@ -50,11 +49,11 @@ export const beerApi = createApi({
     reducerPath: "movies",
     baseQuery: fetchBaseQuery({
         baseUrl: "https://api.punkapi.com/v2/",
-        fetchFn: (input, init) => {
-            return new Promise((resolve) => setTimeout(resolve, 2500)).then(
-                () => fetch(input, init)
-            )
-        }
+        // fetchFn: (input, init) => {
+        //     return new Promise((resolve) => setTimeout(resolve, 2500)).then(
+        //         () => fetch(input, init)
+        //     )
+        // }
     }),
     endpoints: (builder) => ({
         getBeers: builder.query<Beer[], number>({
@@ -70,9 +69,9 @@ export const beerApi = createApi({
             // Refetch when the page arg changes
             forceRefetch({ currentArg, previousArg }) {
                 return currentArg !== previousArg
-            }
-        })
-    })
+            },
+        }),
+    }),
 })
 
 // Export hooks for usage in functional components, which are

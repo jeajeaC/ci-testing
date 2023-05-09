@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit"
 import cartSlice from "~/reducers/cart"
+import themeSlice from "~/reducers/theme"
 import { beerApi } from "./services/beer"
 
 export const store = configureStore({
     reducer: {
         cart: cartSlice,
+        theme: themeSlice,
         [beerApi.reducerPath]: beerApi.reducer
     },
     middleware: (getDefaultMiddleware) =>
