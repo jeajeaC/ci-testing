@@ -6,4 +6,8 @@
   &.with-footer {
     height: calc(100vh - $footer-height);
   }
+
+  @include themed {
+    background-color: t(background-primary);
+  }
 }

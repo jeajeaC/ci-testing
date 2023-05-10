@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
 
-export type Beer = {
+export type BeerReturnValue = {
     abv: number
     attenuation_level: number
     boil_volume: { value: number; unit: string }
@@ -44,9 +44,15 @@ export type Beer = {
     volume: { value: number; unit: string }
 }
 
+export type Beer = {
+    description: string
+    id: number
+    name: string
+}
+
 // Define a service using a base URL and expected endpoints
 export const beerApi = createApi({
-    reducerPath: "movies",
+    reducerPath: "beers",
     baseQuery: fetchBaseQuery({
         baseUrl: "https://api.punkapi.com/v2/",
         // fetchFn: (input, init) => {
@@ -58,6 +64,15 @@ export const beerApi = createApi({
     endpoints: (builder) => ({
         getBeers: builder.query<Beer[], number>({
             query: (page) => `beers?page=${page}&per_page=5`,
+            transformResponse: (baseQueryReturnValue: BeerReturnValue[]) => {
+                return baseQueryReturnValue.map(
+                    ({ id, name, description }) => ({
+                        id,
+                        name,
+                        description,
+                    }),
+                )
+            },
             // Only have one cache entry because the arg always maps to one string
             serializeQueryArgs: ({ endpointName }) => {
                 return endpointName

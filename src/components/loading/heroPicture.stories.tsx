@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import Header from "./header"
+import Loading from "./loading"
 
 const meta = {
-    title: "Page/Header",
-    component: Header,
+    title: "Page/Loading",
+    component: Loading,
     // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/react/writing-docs/autodocs
     tags: ["autodocs"],
     parameters: {},
-} satisfies Meta<typeof Header>
+} satisfies Meta<typeof Loading>
 
 export default meta
 type Story = StoryObj<typeof meta>

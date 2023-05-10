@@ -5,21 +5,22 @@ const config: StorybookConfig = {
         "@storybook/addon-links",
         "@storybook/addon-essentials",
         "@storybook/addon-interactions",
+        "storybook-addon-themes",
         {
             name: "@storybook/addon-styling",
             options: {
                 sass: {
-                    implementation: require("sass")
-                }
-            }
-        }
+                    implementation: require("sass"),
+                },
+            },
+        },
     ],
     framework: {
         name: "@storybook/react-vite",
-        options: {}
+        options: {},
     },
     docs: {
-        autodocs: "tag"
-    }
+        autodocs: "tag",
+    },
 }
 export default config

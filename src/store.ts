@@ -7,10 +7,10 @@ export const store = configureStore({
     reducer: {
         cart: cartSlice,
         theme: themeSlice,
-        [beerApi.reducerPath]: beerApi.reducer
+        [beerApi.reducerPath]: beerApi.reducer,
     },
     middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware().concat(beerApi.middleware)
+        getDefaultMiddleware().concat(beerApi.middleware),
 })
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
