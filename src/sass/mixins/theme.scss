@@ -9,6 +9,7 @@
       // defini une variable globale contenant un hash
       // de toutes les valeurs courantes du theme
       $theme-map: () !global;
+      transition: background-color 0.1s linear;
 
       @each $key,
       $submap in $map {
