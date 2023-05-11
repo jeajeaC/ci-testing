@@ -2,7 +2,7 @@ stages:
     - test
 
 test:
-    image: node:latest
+    image: cypress/browsers:node16.16.0-chrome107-ff107-edge
     stage: test
     script:
         # install dependencies
