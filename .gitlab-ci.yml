@@ -1,7 +1,7 @@
 stages:
-    - test-e2e
+    - test
 
-test-e2e:
+test:
     image: node:latest
     stage: test
     script:
