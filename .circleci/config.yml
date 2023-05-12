@@ -23,4 +23,6 @@ workflows:
                   install-browsers: true
                   start-command: "yarn dev"
                   cypress-command: "yarn test:e2e"
-            - visual-tests
+            - visual-tests:
+                requires:
+                    - cypress/run
