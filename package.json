@@ -13,7 +13,6 @@
         "test:e2e": "yarn cypress run --browser firefox"
     },
     "dependencies": {
-        "@argos-ci/cli": "^0.4.4",
         "@reduxjs/toolkit": "^1.9.5",
         "classnames": "^2.3.2",
         "module-alias": "^2.2.2",
@@ -25,6 +24,8 @@
         "storybook": "^7.0.8"
     },
     "devDependencies": {
+        "@argos-ci/cli": "^0.4.4",
+        "@argos-ci/cypress": "^0.0.6",
         "@storybook/addon-essentials": "^7.0.8",
         "@storybook/addon-interactions": "^7.0.8",
         "@storybook/addon-links": "^7.0.8",

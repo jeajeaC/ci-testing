@@ -33,6 +33,13 @@
     sharp "^0.31.1"
     tmp "^0.2.1"
 
+"@argos-ci/cypress@^0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/@argos-ci/cypress/-/cypress-0.0.6.tgz#5dc50f5e618eb8ccc7e0e42169025989c62a2142"
+  integrity sha512-lKPHPZbccCvYUbVzyzA3KTHC9MO4imOIWmWjnEqy9AIul7vvqZTCHURtGA6BWEHYtNc4Pi0zCyUoQz0muvFKeA==
+  dependencies:
+    cypress-wait-until "^1.7.2"
+
 "@aw-web-design/x-default-browser@1.4.88":
   version "1.4.88"
   resolved "https://registry.yarnpkg.com/@aw-web-design/x-default-browser/-/x-default-browser-1.4.88.tgz#33d869cb2a537cd6d2a8369d4dc8ea4988d4be89"
@@ -3845,6 +3852,11 @@ csstype@^3.0.2:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.1.2.tgz#1d4bf9d572f11c14031f0436e1c10bc1f571f50b"
   integrity sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==
+
+cypress-wait-until@^1.7.2:
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/cypress-wait-until/-/cypress-wait-until-1.7.2.tgz#7f534dd5a11c89b65359e7a0210f20d3dfc22107"
+  integrity sha512-uZ+M8/MqRcpf+FII/UZrU7g1qYZ4aVlHcgyVopnladyoBrpoaMJ4PKZDrdOJ05H5RHbr7s9Tid635X3E+ZLU/Q==
 
 cypress@^12.11.0:
   version "12.11.0"
