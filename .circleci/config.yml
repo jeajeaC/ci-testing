@@ -4,6 +4,15 @@ orbs:
 executor:
     docker:
         image: cypress/browsers:node16.16.0-chrome107-ff107-edge
+jobs:
+  build:
+    executor: node/default
+    steps:
+      - checkout
+      - run:
+          name: Upload screenshots to argos-ci.com
+          command: npx @argos-ci/cli upload ./screenshots
+
 
 workflows:
     test:
