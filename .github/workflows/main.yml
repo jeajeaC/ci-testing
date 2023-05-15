@@ -19,6 +19,8 @@ jobs:
           node-version: latest
       - name: Run install
         run: yarn install --frozen-lockfile
+      - name: Build
+        run: yarn build
       - name: Save build folder
         uses: actions/upload-artifact@v3
         with:
