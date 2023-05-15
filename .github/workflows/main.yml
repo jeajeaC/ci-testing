@@ -19,7 +19,9 @@ jobs:
               with:
                   node-version: latest
                   cache: "yarn"
-
+            - name: Lint code
+              run: yarn lint
+                
             - name: Run install
               run: yarn install --immutable --immutable-cache
 
@@ -31,6 +33,7 @@ jobs:
               with:
                   start: yarn preview
                   browser: firefox
+                  
             - name: Upload screenshots
               env:
                   ARGOS_TOKEN: ${{ secrets.ARGOS_TOKEN }}
