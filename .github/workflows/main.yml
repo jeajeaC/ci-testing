@@ -40,4 +40,4 @@ jobs:
                   path: cypress/screenshots
 
             - name: Upload screenshots
-              uses: npx @argos-ci/cli upload cypress/screenshots
+              run: npx @argos-ci/cli upload cypress/screenshots
