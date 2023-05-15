@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react"
 import ThemeSetter from "./themeSetter"
-import theme from "~/reducers/theme"
 
 const meta = {
     title: "Page/ThemeSetter",

@@ -7,17 +7,21 @@ interface FooterProps {
     itemCount: number
     onRemoveAllFromCart: MouseEventHandler
 }
-
 export default function Footer({
     itemCount,
-    onRemoveAllFromCart
+    onRemoveAllFromCart,
 }: FooterProps) {
     return (
         <footer className="footer">
             {itemCount} items in your basket
             <Button onClick={onRemoveAllFromCart} disabled={itemCount === 0}>
                 <img
-                    src={deleteForeverLogo}
+                    src={
+                        new URL(
+                            `./dir/${deleteForeverLogo}.png`,
+                            import.meta.url,
+                        ).href
+                    }
                     alt="delete forever"
                     className="logo"
                 />
