@@ -18,8 +18,24 @@ jobs:
         with:
           node-version: latest
       - name: Run install
-        run: yarn install --frozen-lockfile 
-      - name: Test the app
-        run: yarn test:e2e
-      - name: Upload screenshots
-        run: npx @argos-ci/cli upload cypress/screenshots
+        run: yarn install --frozen-lockfile
+      - name: Save build folder
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist
+          if-no-files-found: error
+          path: build
+  cypress-run:
+    runs-on: ubuntu-latest
+    container: cypress/browsers:node16.16.0-chrome107-ff107-edge
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Cypress run
+        uses: cypress-io/github-action@v5
+        with:
+          build: npm run build
+          start: yarn preview
+          browser: firefox
+      
+
