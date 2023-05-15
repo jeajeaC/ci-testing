@@ -1,5 +1,5 @@
 describe("cart", () => {
-    it("should addand remove an item from cart", () => {
+    it("should addand remove an item from cart", async () => {
         cy.visit("http://localhost:5173")
         cy.argosScreenshot("home without cart")
         cy.contains("The Cart App")
@@ -11,7 +11,7 @@ describe("cart", () => {
         // cy.get("ul > li:nth-child(1) > div > .item-delete-button").click() // can't find how to swipe
     })
 
-    it("should remove everything from cart", () => {
+    it("should remove everything from cart", async () => {
         cy.visit("http://localhost:5173")
         cy.contains("The Cart App")
         cy.get("ul > li:nth-child(1) > div > article > .add-button").click()
