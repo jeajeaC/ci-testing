@@ -14,7 +14,7 @@ export default function Button({
     children,
     disabled,
     danger,
-    classes = {}
+    classes = {},
 }: ButtonProps) {
     return (
         <button

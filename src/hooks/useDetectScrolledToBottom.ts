@@ -3,7 +3,7 @@ import useEventListener from "./useEventListener"
 
 function useDetectScrolledToBottom<T extends HTMLElement>(
     onScrollToBottom: Function,
-    elementRef: RefObject<T>
+    elementRef: RefObject<T>,
 ) {
     const handlescrollToBottom = () => {
         if (!(elementRef && elementRef.current)) return
@@ -17,7 +17,7 @@ function useDetectScrolledToBottom<T extends HTMLElement>(
     }
 
     useEventListener("scroll", handlescrollToBottom, elementRef, {
-        passive: true
+        passive: true,
     })
     return elementRef
 }

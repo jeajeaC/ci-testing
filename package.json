@@ -10,7 +10,7 @@
         "preview": "vite preview",
         "storybook": "storybook dev -p 6006",
         "build-storybook": "storybook build",
-        "test:e2e": "yarn cypress run --browser firefox"
+        "test:e2e": "yarn cypress run"
     },
     "dependencies": {
         "@reduxjs/toolkit": "^1.9.5",

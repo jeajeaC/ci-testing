@@ -6,6 +6,7 @@ export default defineConfig({
             // implement node event listeners here
         },
     },
+    video: false,
     viewportHeight: 851,
     viewportWidth: 393,
     component: {
