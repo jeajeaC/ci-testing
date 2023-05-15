@@ -8,8 +8,8 @@ on:
         branches:
             - main
 jobs:
-    test:
-        name: Build
+    tests:
+        name: Test
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v3
@@ -31,13 +31,6 @@ jobs:
               with:
                   start: yarn preview
                   browser: firefox
-
-            - name: Save screenshot folder
-              uses: actions/upload-artifact@v3
-              with:
-                  name: screenshot
-                  if-no-files-found: error
-                  path: cypress/screenshots
-
             - name: Upload screenshots
+              continue-on-error: true
               run: npx @argos-ci/cli upload cypress/screenshots
