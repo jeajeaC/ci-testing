@@ -1,47 +1,43 @@
 on:
-  push:
-    branches:
-    - main
-    - feat/*
-    - fix/*
-  pull_request:
-    branches:
-    - main
+    push:
+        branches:
+            - main
+            - feat/*
+            - fix/*
+    pull_request:
+        branches:
+            - main
 jobs:
-  build:
-    name: Build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Set Node.js latest
-        uses: actions/setup-node@v3
-        with:
-          node-version: latest
-      - name: Run install
-        run: yarn install --frozen-lockfile
-      - name: Build
-        run: yarn build
-      - name: Save build folder
-        uses: actions/upload-artifact@v3
-        with:
-          name: build
-          if-no-files-found: error
-          path: dist
-  cypress-run:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+    test:
+        name: Build
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
 
-      - name: Download the build folder
-        uses: actions/download-artifact@v3
-        with:
-          name: build
-          path: dist
+            - name: Set Node.js latest
+              uses: actions/setup-node@v3
+              with:
+                  node-version: latest
+                  cache: "yarn"
 
-      - name: Cypress run
-        uses: cypress-io/github-action@v5
-        with:
-          start: yarn preview
-          browser: firefox
+            - name: Run install
+              run: yarn install --immutable --immutable-cache
+
+            - name: Build
+              run: yarn build
+
+            - name: Cypress run
+              uses: cypress-io/github-action@v5
+              with:
+                  start: yarn preview
+                  browser: firefox
+
+            - name: Save screenshot folder
+              uses: actions/upload-artifact@v3
+              with:
+                  name: screenshot
+                  if-no-files-found: error
+                  path: cypress/screenshots
+
+            - name: Upload screenshots
+              uses: npx @argos-ci/cli upload cypress/screenshots
