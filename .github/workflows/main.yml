@@ -19,11 +19,12 @@ jobs:
               with:
                   node-version: latest
                   cache: "yarn"
-            - name: Lint code
-              run: yarn lint
                 
             - name: Run install
               run: yarn install --immutable --immutable-cache
+          
+            - name: Lint code
+              run: yarn lint
 
             - name: Build
               run: yarn build
