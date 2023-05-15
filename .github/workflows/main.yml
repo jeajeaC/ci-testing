@@ -32,5 +32,7 @@ jobs:
                   start: yarn preview
                   browser: firefox
             - name: Upload screenshots
+              env:
+                  ARGOS_TOKEN: ${{ secrets.ARGOS_TOKEN }}
               continue-on-error: true
               run: npx @argos-ci/cli upload cypress/screenshots
