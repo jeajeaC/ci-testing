@@ -13,17 +13,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Set Node.js 16.x
+      - name: Set Node.js latest
         uses: actions/setup-node@v3
         with:
           node-version: latest
       - name: Run install
-        uses: borales/actions-yarn@v4
-        with:
-          cmd: install # will run `yarn install` command
+        run: yarn install --frozen-lockfile 
       - name: Test the app
-        uses: borales/actions-yarn@v4
-        with:
-          cmd: test:e2e # will run `yarn test` command
+        run: yarn test:e2e
       - name: Upload screenshots
         run: npx @argos-ci/cli upload cypress/screenshots
