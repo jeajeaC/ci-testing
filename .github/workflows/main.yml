@@ -22,7 +22,7 @@ jobs:
       - name: Save build folder
         uses: actions/upload-artifact@v3
         with:
-          name: dist
+          name: build
           if-no-files-found: error
           path: dist
   cypress-run:
@@ -35,7 +35,7 @@ jobs:
       - name: Download the build folder
         uses: actions/download-artifact@v3
         with:
-          name: dist
+          name: build
           path: dist
 
       - name: Cypress run
